@@ -41,6 +41,7 @@ class FichaScreen(Screen):
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
         self.ids.tipodropdown.dismiss()
+        self.calculaCustoCarac()
 
 class ArsmagicaApp(App):
     def build(self):
