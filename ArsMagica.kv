@@ -1,42 +1,98 @@
 <FichaScreen>:
 
-    tipoBotao: tipoBotao
-    FloatLayout:
-        Button:
-            text: 'tipo'
-            id: tipoBotao
-            pos_hint: {"x": 0, "top": 0.8}
-            size_hint: 0.1, 0.1
-            on_release:
-                tipodropdown.open(self)
+    tipodropdown: tipodropdown
 
-            DropDown:
-                id: tipodropdown
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        BoxLayout:
+            Label:
+                text: 'Nome: '
+            TextInput:
+            Label:
+                text: 'Tipo: '
+            Button:
+                text: 'tipo'
+                id: tipoBotao
+                on_release:
+                    tipodropdown.open(self)
 
-                Button:
-                    text: 'My first Item'
-                    size_hint_y: None
-                    height: 44
-                Button:
-                    text: 'My second Item'
-                    size_hint_y: None
-                    height: 44
-                Button:
-                    text: 'Groge'
-                    size_hint_y: None
-                    height: 44
+                DropDown:
+                    id: tipodropdown
+                    on_select: tipoBotao.text = '{}'.format(args[1])
+                    Button:
+                        text: 'Magus'
+                        size_hint_y: None
+                        height: 44
+                        on_release: tipodropdown.select('Magus')
+                    Button:
+                        text: 'Companheiro'
+                        size_hint_y: None
+                        height: 44
+                        on_release: tipodropdown.select('Companheiro')
+                    Button:
+                        text: 'Groge'
+                        size_hint_y: None
+                        height: 44
+                        on_release: tipodropdown.select('Groge')
 
-
-<CustomDropDown>:
-    Button:
-        text: 'My first Item'
-        on_release: root.select('Magus')
-        height: 44
-    Button:
-        text: 'My second Item'
-        on_release: root.select('Companheiro')
-        height: 44
-    Button:
-        text: 'Groge'
-        on_release: root.select('Groge')
-        height: 44
+        BoxLayout:
+            Label:
+                text: 'Idade'
+            TextInput:
+                id: idade
+                multiline: False
+                on_text_validate:
+                    xp.text = str(int(idade.text)*5)
+            Label:
+                text: 'Xp:'
+            Label:
+                id: xp
+        BoxLayout:
+            Label:
+                text: 'Inteligência'
+            TextInput:
+                id: Inteligência
+                multiline: False
+        BoxLayout:
+            Label:
+                text: 'Percepção'
+            TextInput:
+                id: Percepção
+                multiline: False
+        BoxLayout:
+            Label:
+                text: 'Força'
+            TextInput:
+                id: Força
+                multiline: False
+        BoxLayout:
+            Label:
+                text: 'Vigor'
+            TextInput:
+                id: Vigor
+                multiline: False
+        BoxLayout:
+            Label:
+                text: 'Presença'
+            TextInput:
+                id: Presença
+                multiline: False
+        BoxLayout:
+            Label:
+                text: 'Comunicação'
+            TextInput:
+                id: Comunicação
+                multiline: False
+        BoxLayout:
+            Label:
+                text: 'Destreza'
+            TextInput:
+                id: Destreza
+                multiline: False
+        BoxLayout:
+            Label:
+                text: 'Rapidez'
+            TextInput:
+                id: Rapidez
+                multiline: False

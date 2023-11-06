@@ -22,10 +22,11 @@ class CustomDropDown(DropDown):
 
 
 class FichaScreen(Screen):
-    #tipodropdown = ObjectProperty(None)
     tipoBotao = ObjectProperty(None)
     tipoLabel = ObjectProperty(None)
-
+    def __init__(self, **kwargs):
+        super(FichaScreen, self).__init__(**kwargs)
+        self.tipodropdown.dismiss()
 
 class ArsmagicaApp(App):
     def build(self):
