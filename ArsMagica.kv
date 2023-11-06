@@ -1,7 +1,5 @@
 <FichaScreen>:
 
-    tipodropdown: tipodropdown
-
     BoxLayout:
         orientation: 'vertical'
         padding: 10
@@ -50,49 +48,71 @@
                 id: xp
         BoxLayout:
             Label:
+                text: 'Pontos disponíveis para Características'
+            Label:
+                id: ptCarac
+                multiline: False
+        BoxLayout:
+            Label:
                 text: 'Inteligência'
             TextInput:
-                id: Inteligência
+                id: Inteligencia
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()
         BoxLayout:
             Label:
                 text: 'Percepção'
             TextInput:
                 id: Percepção
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()
         BoxLayout:
             Label:
                 text: 'Força'
             TextInput:
                 id: Força
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()
         BoxLayout:
             Label:
                 text: 'Vigor'
             TextInput:
                 id: Vigor
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()
         BoxLayout:
             Label:
                 text: 'Presença'
             TextInput:
                 id: Presença
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()
         BoxLayout:
             Label:
                 text: 'Comunicação'
             TextInput:
                 id: Comunicação
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()
         BoxLayout:
             Label:
                 text: 'Destreza'
             TextInput:
                 id: Destreza
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()
         BoxLayout:
             Label:
                 text: 'Rapidez'
             TextInput:
                 id: Rapidez
                 multiline: False
+                on_text_validate:
+                    root.calculaCustoCarac()

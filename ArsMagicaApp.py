@@ -15,18 +15,32 @@ from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.image import AsyncImage
 
-
-class CustomDropDown(DropDown):
-    pass
-
-
-
 class FichaScreen(Screen):
-    tipoBotao = ObjectProperty(None)
-    tipoLabel = ObjectProperty(None)
+    def calculaCustoCarac(self):
+        Int = self.retornaInteiro(self.ids.Inteligencia.text)
+        Per = self.retornaInteiro(self.ids.Percepção.text)
+        For = self.retornaInteiro(self.ids.Força.text)
+        Vig = self.retornaInteiro(self.ids.Vigor.text)
+        Pre = self.retornaInteiro(self.ids.Presença.text)
+        Com = self.retornaInteiro(self.ids.Comunicação.text)
+        Des = self.retornaInteiro(self.ids.Destreza.text)
+        Rap = self.retornaInteiro(self.ids.Rapidez.text)
+        custoCarac = self.calculaProgAri(Int) + self.calculaProgAri(Per) + self.calculaProgAri(For) + self.calculaProgAri(Vig) + self.calculaProgAri(Pre) + self.calculaProgAri(Com) + self.calculaProgAri(Des) + self.calculaProgAri(Rap)
+        ptDispon = 7 - custoCarac
+        self.ids.ptCarac.text = str(ptDispon)
+    def retornaInteiro(self, strObj):
+        if strObj != '':
+            return int(strObj)
+        return 0
+
+    def calculaProgAri(self, n):
+        if n >= 0:
+            return n*(n+1)/2
+        return n*(-n+1)/2
+
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
-        self.tipodropdown.dismiss()
+        self.ids.tipodropdown.dismiss()
 
 class ArsmagicaApp(App):
     def build(self):
