@@ -28,20 +28,21 @@ class FichaScreen(Screen):
         custoCarac = self.calculaProgAri(Int) + self.calculaProgAri(Per) + self.calculaProgAri(For) + self.calculaProgAri(Vig) + self.calculaProgAri(Pre) + self.calculaProgAri(Com) + self.calculaProgAri(Des) + self.calculaProgAri(Rap)
         ptDispon = 7 - custoCarac
         self.ids.ptCarac.text = str(ptDispon)
-    def retornaInteiro(self, strObj):
+
+    def retornaInteiro(self, strObj): ##Pega o valor de uma label, string, e retorna um inteiro
         if strObj != '':
             return int(strObj)
         return 0
 
-    def calculaProgAri(self, n):
+    def calculaProgAri(self, n): ##faz o calculo da progressão aritmetica da soma de todos os números até n, é importante para o calculo do custo na compra de características
         if n >= 0:
             return n*(n+1)/2
         return n*(-n+1)/2
 
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
-        self.ids.tipodropdown.dismiss()
-        self.calculaCustoCarac()
+        self.ids.tipodropdown.dismiss() ##fecha o tipo drop down, sem essa função o tipo dropdown aaparece aberto logo no início da aplicação
+        self.calculaCustoCarac() ##preenche o n° de pontos disponíveis para caracteristicas, vai ser importante quando fichas buscar a ficha específica no banco de dados.
 
 class ArsmagicaApp(App):
     def build(self):
