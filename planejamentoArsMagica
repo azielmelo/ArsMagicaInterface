@@ -1,0 +1,15 @@
+    Introdução
+
+        Este arquivo tem como propósito organizar e guiar o desenvolvimento do sftware "Ars Magica". Nele será encontrado uma lista de tarefas,
+um cronograma e um custo de esforço. Esse último será medido em horas de trabalho gasto, tanto em desenvolvimento como para estudo.
+
+    Premissas e Restrições
+
+        O projeto "Ars magica" foi idealizado como um projeto escrito em python, utilizando ao máximo de suas capacidades. Portanto não vai ser
+utilizado em seu desenvolvimento outras linguagens como C, C++ ou java. Far-se-á entretanto o uso do SQL, no desenvolvimento de uma comunicação
+com Banco de Dados.
+
+    Evolução do Plano de Desenvolvimento de Software
+
+        Este plano será revisado a cada semana, com uma atualização dos custos de esforço e de um novo planejamento. Cada atualização deste plano
+contará como uma iteração de versão de software, gerando uma nova versão.
