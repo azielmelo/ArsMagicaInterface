@@ -13,3 +13,21 @@ com Banco de Dados.
 
         Este plano será revisado a cada semana, com uma atualização dos custos de esforço e de um novo planejamento. Cada atualização deste plano
 contará como uma iteração de versão de software, gerando uma nova versão.
+
+    Estrutura Organizacional
+
+        Este projeto é desenvolvido por Aziel de Fontes Melo, estudante da UFPE, Pernambuco, Recife.
+
+    Plano do Projeto
+
+        Este projeto terá um plano de fases circular. As fases ocorrem de forma sequencial. São as fases:
+
+            Planejamento
+                    Nesta fase far-se-á um projeto de nível estratégico das características funcionais necessárias ao Software úteis e atraentes à persona
+                deste projeto¹.
+            Desenho de software
+
+            Escrita
+            Estudo
+
+¹ A persona deste projeto é o jogador de rpg, de 12 a 18 anos de idade.
