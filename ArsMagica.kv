@@ -3,6 +3,12 @@
     BoxLayout:
         orientation: 'vertical'
         padding: 10
+
+        Button:
+            text: 'Salvar Ficha'
+            on_release:
+                root.salvarFicha()
+
         BoxLayout:
             Label:
                 text: 'Nome: '

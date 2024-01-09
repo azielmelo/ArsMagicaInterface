@@ -4,6 +4,7 @@ import random
 
 os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
+import mysql.connector
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
@@ -14,6 +15,24 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.image import AsyncImage
+
+
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database = "banco"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM usuario")
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
 
 class FichaScreen(Screen):
     def calculaCustoCarac(self):
@@ -39,6 +58,15 @@ class FichaScreen(Screen):
             return n*(n+1)/2
         return n*(-n+1)/2
 
+    def salvarFicha(self):
+        sql = ("insert into fichas (inteligência)"
+               " value ")
+        val = self.retornaInteiro(self.ids.Inteligencia.text)
+        sql = sql + '(' + str(val) + ')'
+        print(sql)
+        mycursor.execute(sql)
+        mydb.commit()
+
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
         self.ids.tipodropdown.dismiss() ##fecha o tipo drop down, sem essa função o tipo dropdown aaparece aberto logo no início da aplicação
@@ -57,6 +85,8 @@ for Screen in screens:
     sm.add_widget(Screen)
 
 sm.current = "ficha"
+
+
 
 if __name__ == '__main__':
     ArsmagicaApp().run()
