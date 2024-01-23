@@ -52,12 +52,16 @@ class FichaScreen(Screen):
         return n*(-n+1)/2
 
     def salvarFicha(self): #salva no banco de dados a ficha
-        sql = ("insert into fichas (inteligência)"
-               " value ")
-        val = self.retornaInteiro(self.ids.Inteligencia.text)
-        sql = sql + '(' + str(val) + ')'
+        sql = ("insert into fichas (nome, tipo, idade, xp, inteligencia, percepcao, forca, vigor, presenca, comunicacao, destreza, rapidez)"
+               " values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+        val = (self.ids.nomeFicha.text, self.ids.tipoBotao.text, self.retornaInteiro(self.ids.idade.text), self.retornaInteiro(self.ids.xp.text),
+               self.retornaInteiro(self.ids.Inteligencia.text), self.retornaInteiro(self.ids.Percepção.text),
+               self.retornaInteiro(self.ids.Força.text), self.retornaInteiro(self.ids.Vigor.text),
+               self.retornaInteiro(self.ids.Presença.text), self.retornaInteiro(self.ids.Comunicação.text),
+               self.retornaInteiro(self.ids.Destreza.text), self.retornaInteiro(self.ids.Rapidez.text),)
+        ##sql = sql + '(' + str(val) + ')'
         print(sql)
-        mycursor.execute(sql)
+        mycursor.execute(sql, val)
         mydb.commit()
 
     def __init__(self, **kwargs):
