@@ -17,7 +17,7 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.image import AsyncImage
 
 
-
+##conecta com um banco de dados
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -27,15 +27,8 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT * FROM usuario")
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
-
 class FichaScreen(Screen):
-    def calculaCustoCarac(self):
+    def calculaCustoCarac(self): ##calcula o custo das características
         Int = self.retornaInteiro(self.ids.Inteligencia.text)
         Per = self.retornaInteiro(self.ids.Percepção.text)
         For = self.retornaInteiro(self.ids.Força.text)
@@ -58,7 +51,7 @@ class FichaScreen(Screen):
             return n*(n+1)/2
         return n*(-n+1)/2
 
-    def salvarFicha(self):
+    def salvarFicha(self): #salva no banco de dados a ficha
         sql = ("insert into fichas (inteligência)"
                " value ")
         val = self.retornaInteiro(self.ids.Inteligencia.text)
