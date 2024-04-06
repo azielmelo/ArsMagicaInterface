@@ -4,11 +4,6 @@
         orientation: 'vertical'
         padding: 10
 
-        Button:
-            text: 'Salvar Ficha'
-            on_release:
-                root.salvarFicha()
-
         BoxLayout:
             Label:
                 text: 'Nome: '
@@ -47,11 +42,13 @@
                 id: idade
                 multiline: False
                 on_text_validate:
-                    xp.text = str(int(idade.text)*5)
+                    root.calcula_custo_hab()
             Label:
                 text: 'Xp:'
             Label:
                 id: xp
+        Label:
+            text: 'Características'
         BoxLayout:
             Label:
                 text: 'Pontos disponíveis para Características'
@@ -65,7 +62,7 @@
                 id: Inteligencia
                 multiline: False
                 on_text_validate:
-                    root.calculaCustoCarac()
+                    root.calcula_custo_carac()
         BoxLayout:
             Label:
                 text: 'Percepção'
@@ -73,23 +70,7 @@
                 id: Percepção
                 multiline: False
                 on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Força'
-            TextInput:
-                id: Força
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Vigor'
-            TextInput:
-                id: Vigor
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
+                    root.calcula_custo_carac()
         BoxLayout:
             Label:
                 text: 'Presença'
@@ -97,7 +78,7 @@
                 id: Presença
                 multiline: False
                 on_text_validate:
-                    root.calculaCustoCarac()
+                    root.calcula_custo_carac()
         BoxLayout:
             Label:
                 text: 'Comunicação'
@@ -105,7 +86,24 @@
                 id: Comunicação
                 multiline: False
                 on_text_validate:
-                    root.calculaCustoCarac()
+                    root.calcula_custo_carac()
+        BoxLayout:
+            Label:
+                text: 'Força'
+            TextInput:
+                id: Força
+                multiline: False
+                on_text_validate:
+                    root.calcula_custo_carac()
+        BoxLayout:
+            Label:
+                text: 'Vigor'
+            TextInput:
+                id: Vigor
+                multiline: False
+                on_text_validate:
+                    root.calcula_custo_carac()
+
         BoxLayout:
             Label:
                 text: 'Destreza'
@@ -113,7 +111,7 @@
                 id: Destreza
                 multiline: False
                 on_text_validate:
-                    root.calculaCustoCarac()
+                    root.calcula_custo_carac()
         BoxLayout:
             Label:
                 text: 'Rapidez'
@@ -121,4 +119,36 @@
                 id: Rapidez
                 multiline: False
                 on_text_validate:
-                    root.calculaCustoCarac()
+                    root.calcula_custo_carac()
+        Label:
+            text: 'Habilidades'
+        Label:
+            text: 'Combate'
+        BoxLayout:
+            Label:
+                text: 'habilidade'
+            Label:
+                text: 'especialidade'
+            Label:
+                text: 'valor'
+        BoxLayout:
+            Label:
+                text: 'Armas de uma Mão'
+            TextInput:
+                multiline: False
+            TextInput:
+                id: armas_de_uma_mao
+                multiline: False
+                on_text_validate:
+                    root.calcula_custo_hab()
+
+        BoxLayout:
+            Label:
+                text: 'Armas de duas Mãos'
+            TextInput:
+                multiline: False
+            TextInput:
+                id: armas_de_duas_maos
+                multiline: False
+                on_text_validate:
+                    root.calcula_custo_hab()
