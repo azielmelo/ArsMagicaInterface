@@ -36,20 +36,20 @@ class FichaScreen(Screen):
         xp = xp - custoHab
         self.ids.xp.text = str(xp)
 
-    def retorna_inteiro(self, strObj): ##Pega o valor de uma label, string, e retorna um inteiro
+    def retorna_inteiro(self, strObj): # Pega o valor de uma label, string, e retorna um inteiro
         if strObj != '':
             return int(strObj)
         return 0
 
-    def calculaProgAri(self, n): ##faz o calculo da progressão aritmetica da soma de todos os números até n, é importante para o calculo do custo na compra de características
+    def calculaProgAri(self, n): # faz o calculo da progressão aritmetica da soma de todos os números até n, é importante para o calculo do custo na compra de características
         if n >= 0:
             return n*(n+1)/2
         return n*(-n+1)/2
 
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
-        self.ids.tipodropdown.dismiss() ##fecha o tipo drop down, sem essa função o tipo dropdown aaparece aberto logo no início da aplicação
-        self.calcula_custo_carac() ##preenche o n° de pontos disponíveis para caracteristicas, vai ser importante quando fichas buscar a ficha específica no banco de dados.
+        self.ids.tipodropdown.dismiss() # fecha o tipo drop down, sem essa função o tipo dropdown aaparece aberto logo no início da aplicação
+        self.calcula_custo_carac() # preenche o n° de pontos disponíveis para caracteristicas, vai ser importante quando fichas buscar a ficha específica no banco de dados.
 
 class ArsmagicaApp(App):
     def build(self):

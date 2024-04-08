@@ -2,153 +2,263 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
+        padding: 20
 
+        # informações base da personagem
         BoxLayout:
-            Label:
-                text: 'Nome: '
-            TextInput:
-            Label:
-                text: 'Tipo: '
-            Button:
-                text: 'tipo'
-                id: tipoBotao
-                on_release:
-                    tipodropdown.open(self)
+            orientation: 'vertical'
+            size_hint_y: 0.1
 
-                DropDown:
-                    id: tipodropdown
-                    on_select: tipoBotao.text = '{}'.format(args[1])
-                    Button:
-                        text: 'Magus'
+            BoxLayout:
+                Label:
+                    text: 'Nome: '
+                TextInput:
+                Label:
+                    text: 'Tipo: '
+                Button:
+                    text: 'tipo'
+                    id: tipoBotao
+                    on_release:
+                        tipodropdown.open(self)
+
+                    DropDown:
+                        id: tipodropdown
+                        on_select: tipoBotao.text = '{}'.format(args[1])
+                        Button:
+                            text: 'Magus'
+                            size_hint_y: None
+                            height: 44
+                            on_release: tipodropdown.select('Magus')
+                        Button:
+                            text: 'Companheiro'
+                            size_hint_y: None
+                            height: 44
+                            on_release: tipodropdown.select('Companheiro')
+                        Button:
+                            text: 'Groge'
+                            size_hint_y: None
+                            height: 44
+                            on_release: tipodropdown.select('Groge')
+
+            BoxLayout:
+                Label:
+                    text: 'Idade'
+                TextInput:
+                    id: idade
+                    multiline: False
+                    on_text_validate:
+                        root.calcula_custo_hab()
+                Label:
+                    text: 'Xp:'
+                Label:
+                    id: xp
+
+        # habilidades e Características
+        BoxLayout:
+            padding: 30
+
+            # características
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.5
+                pos_hint: {'top': 1}
+
+                Label:
+                    text: 'Características'
+
+                BoxLayout:
+                    Label:
+                        text: 'Pontos disponíveis para Características'
+                    Label:
+                        id: ptCarac
+                        multiline: False
+
+                BoxLayout:
+                    Label:
+                        text: 'Inteligência'
+                    TextInput:
+                        id: Inteligencia
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+                BoxLayout:
+                    Label:
+                        text: 'Percepção'
+                    TextInput:
+                        id: Percepção
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+                BoxLayout:
+                    Label:
+                        text: 'Presença'
+                    TextInput:
+                        id: Presença
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+                BoxLayout:
+                    Label:
+                        text: 'Comunicação'
+                    TextInput:
+                        id: Comunicação
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+                BoxLayout:
+                    Label:
+                        text: 'Força'
+                    TextInput:
+                        id: Força
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+                BoxLayout:
+                    Label:
+                        text: 'Vigor'
+                    TextInput:
+                        id: Vigor
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+                BoxLayout:
+                    Label:
+                        text: 'Destreza'
+                    TextInput:
+                        id: Destreza
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+                BoxLayout:
+                    Label:
+                        text: 'Rapidez'
+                    TextInput:
+                        id: Rapidez
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_carac()
+
+            # fim das características
+
+            # começo das habilidades
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.5
+                pos_hint: {'top': 1}
+
+                Label:
+                    text: 'Habilidades'
+                    pos_hint: {'top': 1}
+                    size_hint_y: None
+                    size: self.texture_size
+
+                # habilidades marciais
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    Label:
                         size_hint_y: None
-                        height: 44
-                        on_release: tipodropdown.select('Magus')
-                    Button:
-                        text: 'Companheiro'
+                        size: self.texture_size
+                        text: 'Hablidades Marciais'
+                    BoxLayout:
                         size_hint_y: None
-                        height: 44
-                        on_release: tipodropdown.select('Companheiro')
-                    Button:
-                        text: 'Groge'
+                        size: root.ids.habilidade.texture_size
+                        Label:
+                            id: habilidade
+                            text: 'habilidade'
+                        Label:
+                            text: 'especialidade'
+                        Label:
+                            text: 'valor'
+
+                    BoxLayout:
                         size_hint_y: None
-                        height: 44
-                        on_release: tipodropdown.select('Groge')
+                        size: root.ids.teste2.texture_size
 
-        BoxLayout:
-            Label:
-                text: 'Idade'
-            TextInput:
-                id: idade
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_hab()
-            Label:
-                text: 'Xp:'
-            Label:
-                id: xp
-        Label:
-            text: 'Características'
-        BoxLayout:
-            Label:
-                text: 'Pontos disponíveis para Características'
-            Label:
-                id: ptCarac
-                multiline: False
-        BoxLayout:
-            Label:
-                text: 'Inteligência'
-            TextInput:
-                id: Inteligencia
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
-        BoxLayout:
-            Label:
-                text: 'Percepção'
-            TextInput:
-                id: Percepção
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
-        BoxLayout:
-            Label:
-                text: 'Presença'
-            TextInput:
-                id: Presença
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
-        BoxLayout:
-            Label:
-                text: 'Comunicação'
-            TextInput:
-                id: Comunicação
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
-        BoxLayout:
-            Label:
-                text: 'Força'
-            TextInput:
-                id: Força
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
-        BoxLayout:
-            Label:
-                text: 'Vigor'
-            TextInput:
-                id: Vigor
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
+                        Label:
+                            text: 'Armas de Arremesso'
+                        TextInput:
+                            multiline: False
+                        TextInput:
+                            id: armas_de_arremesso
+                            multiline: False
+                            on_text_validate:
+                                root.calcula_custo_hab()
 
-        BoxLayout:
-            Label:
-                text: 'Destreza'
-            TextInput:
-                id: Destreza
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
-        BoxLayout:
-            Label:
-                text: 'Rapidez'
-            TextInput:
-                id: Rapidez
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_carac()
-        Label:
-            text: 'Habilidades'
-        Label:
-            text: 'Combate'
-        BoxLayout:
-            Label:
-                text: 'habilidade'
-            Label:
-                text: 'especialidade'
-            Label:
-                text: 'valor'
-        BoxLayout:
-            Label:
-                text: 'Armas de uma Mão'
-            TextInput:
-                multiline: False
-            TextInput:
-                id: armas_de_uma_mao
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_hab()
+                    BoxLayout:
+                        size_hint_y: None
+                        size: root.ids.teste2.texture_size
 
-        BoxLayout:
-            Label:
-                text: 'Armas de duas Mãos'
-            TextInput:
-                multiline: False
-            TextInput:
-                id: armas_de_duas_maos
-                multiline: False
-                on_text_validate:
-                    root.calcula_custo_hab()
+                        Label:
+                            text: 'Armas de Duas Mãos'
+                        TextInput:
+                            multiline: False
+                        TextInput:
+                            id: armas_de_duas_maos
+                            multiline: False
+                            on_text_validate:
+                                root.calcula_custo_hab()
+
+                    BoxLayout:
+                        size_hint_y: None
+                        size: root.ids.teste2.texture_size
+
+                        Label:
+                            text: 'Armas de Uma Mão'
+                        TextInput:
+                            multiline: False
+                        TextInput:
+                            id: armas_de_uma_mao
+                            multiline: False
+                            on_text_validate:
+                                root.calcula_custo_hab()
+
+        # fim das habilidades marciais
+                BoxLayout:
+                    size_hint_y: None
+                    size: root.ids.teste2.texture_size
+
+                    Label:
+                        text: 'Armas de Uma Mão'
+                    TextInput:
+                        multiline: False
+                    TextInput:
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_hab()
+
+                BoxLayout:
+                    size_hint_y: None
+                    size: root.ids.teste2.texture_size
+
+                    Label:
+                        text: 'Armas de Uma Mão'
+                    TextInput:
+                        multiline: False
+                    TextInput:
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_hab()
+
+                BoxLayout:
+                    size_hint_y: None
+                    size: root.ids.teste2.texture_size
+                    Label:
+                        id: teste2
+                        text: 'Teste 2'
+                        size_hint_y: None
+                        size: self.texture_size
+                    TextInput:
+                        multiline: False
+                    TextInput:
+                        multiline: False
+                        on_text_validate:
+                            root.calcula_custo_hab()
