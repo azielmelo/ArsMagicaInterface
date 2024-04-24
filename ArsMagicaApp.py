@@ -4,7 +4,7 @@ import random
 
 os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
-import mysql.connector
+import mysql
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
