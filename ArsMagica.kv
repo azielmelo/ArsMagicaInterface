@@ -19,8 +19,7 @@
                 size: self.texture_size
             Button:
                 id: tipo_botão
-                Text: 'Tipo'
-                on_release: TipoDropDown.open
+                text: 'Tipo'
         BoxLayout:
             size_hint_y: None
             size: root.ids.label_joaquim.texture_size
@@ -38,18 +37,17 @@
             text: 'Aziel de Fontes Melo'
 
 <TipoDropDown>:
-     on_select: root.ids.tipo_botão.text = '{}'.format(args[1])
-     Button:
+    Button:
         text: 'Magus'
         size_hint_y: None
         height: 44
         on_release: tipodropdown.select('Magus')
-     Button:
+    Button:
         text: 'Companheiro'
         size_hint_y: None
         height: 44
         on_release: tipodropdown.select('Companheiro')
-     Button:
+    Button:
         text: 'Groge'
         size_hint_y: None
         height: 44

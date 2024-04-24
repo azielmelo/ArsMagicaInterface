@@ -1,4 +1,7 @@
 import os
+
+os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2' # precisa estar aterior ao import kivy ou não funciona
+
 from kivy.app import App
 from kivy.lang import Builder
 # from kivy.uix.boxlayout import BoxLayout
@@ -9,10 +12,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 # from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 # from kivy.uix.image import AsyncImage
-
-os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
-
-
 
 class FichaScreen(Screen):
 
@@ -49,8 +48,8 @@ class FichaScreen(Screen):
 
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
-        #tipo_drop_down = TipoDropDown()
-        #self.ids.tipo_botão.bind(on_release = tipo_drop_down.open)
+        tipo_drop_down = TipoDropDown()
+        self.ids.tipo_botão.bind(on_release=tipo_drop_down.open)
         # self.ids.tipodropdown.dismiss() # fecha o tipo drop down, sem essa função o tipo dropdown aaparece aberto logo no início da aplicação
         # self.calcula_custo_carac() # preenche o n° de pontos disponíveis para caracteristicas, vai ser importante quando fichas buscar a ficha específica no banco de dados.
 
