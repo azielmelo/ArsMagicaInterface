@@ -13,6 +13,7 @@ from kivy.uix.dropdown import DropDown
 os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
 
+
 class FichaScreen(Screen):
 
     # def calcula_custo_carac(self):
