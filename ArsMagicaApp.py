@@ -1,10 +1,11 @@
 import ficha
 import os
 import random
+import mysql
 
 os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
-import mysql
+from mysql import connector
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
@@ -15,17 +16,21 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.dropdown import DropDown
 from kivy.uix.image import AsyncImage
+from kivy.uix.popup import Popup
 
 
-##conecta com um banco de dados
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="1234",
-    database="banco"
-)
+# conecta com um banco de dados
+mydb = 0
+try:
+    mydb = mysql.connector.connect(
+        host="ocalhost",
+        user="root",
+        password="1234",
+        database="banco"
+    )
 
-mycursor = mydb.cursor()
+    mycursor = mydb.cursor()
+except: print("não foi posível se conectar ao banco de dados")
 
 class FichaScreen(Screen):
     def calculaCustoCarac(self): ##calcula o custo das características
@@ -52,17 +57,23 @@ class FichaScreen(Screen):
         return n*(-n+1)/2
 
     def salvarFicha(self): #salva no banco de dados a ficha
-        sql = ("insert into fichas (nome, tipo, idade, xp, inteligencia, percepcao, forca, vigor, presenca, comunicacao, destreza, rapidez)"
+        if mydb != 0:
+            sql = ("insert into fichas (nome, tipo, idade, xp, inteligencia, percepcao, forca, vigor, presenca, comunicacao, destreza, rapidez)"
                " values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
-        val = (self.ids.nomeFicha.text, self.ids.tipoBotao.text, self.retornaInteiro(self.ids.idade.text), self.retornaInteiro(self.ids.xp.text),
+            val = (self.ids.nomeFicha.text, self.ids.tipoBotao.text, self.retornaInteiro(self.ids.idade.text), self.retornaInteiro(self.ids.xp.text),
                self.retornaInteiro(self.ids.Inteligencia.text), self.retornaInteiro(self.ids.Percepção.text),
                self.retornaInteiro(self.ids.Força.text), self.retornaInteiro(self.ids.Vigor.text),
                self.retornaInteiro(self.ids.Presença.text), self.retornaInteiro(self.ids.Comunicação.text),
                self.retornaInteiro(self.ids.Destreza.text), self.retornaInteiro(self.ids.Rapidez.text),)
-        ##sql = sql + '(' + str(val) + ')'
-        print(sql)
-        mycursor.execute(sql, val)
-        mydb.commit()
+            ##sql = sql + '(' + str(val) + ')'
+            print(sql)
+            mycursor.execute(sql, val)
+            mydb.commit()
+        else:
+            popup = Popup(title='Aviso',
+                          content=Label(text='Você não está conectado a um banco de dados'),
+                          size_hint=(None, None), size=(400, 400))
+            popup.open()
 
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
