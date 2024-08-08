@@ -76,8 +76,12 @@ class FichaScreen(Screen):
 
     def __init__(self, **kwargs):
         super(FichaScreen, self).__init__(**kwargs)
-        self.ids.tipodropdown.dismiss() ##fecha o tipo drop down, sem essa função o tipo dropdown aaparece aberto logo no início da aplicação
-        self.calculaCustoCarac() ##preenche o n° de pontos disponíveis para caracteristicas, vai ser importante quando fichas buscar a ficha específica no banco de dados.
+        self.ids.tipodropdown.dismiss()                 # fecha o tipo drop down, sem essa função o tipo dropdown aaparece aberto logo no início da aplicação
+        self.calculaCustoCarac()                        # preenche o n° de pontos disponíveis para caracteristicas, vai ser importante quando fichas buscar a ficha específica no banco de dados.
+
+    def expandir_minimizar_janela(self):
+        print("apertado")
+
 
 class ArsmagicaApp(App):
     def build(self):

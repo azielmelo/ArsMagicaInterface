@@ -34,17 +34,17 @@
                         Button:
                             text: 'Magus'
                             size_hint_y: None
-                            height: self.texture_size[0]
+                            height: 2*self.texture_size[1]
                             on_release: tipodropdown.select('Magus')
                         Button:
                             text: 'Companheiro'
                             size_hint_y: None
-                            height: self.texture_size[0]
+                            height: 2*self.texture_size[1]
                             on_release: tipodropdown.select('Companheiro')
                         Button:
                             text: 'Groge'
                             size_hint_y: None
-                            height: self.texture_size[0]
+                            height: 2*self.texture_size[1]
                             on_release: tipodropdown.select('Groge')
 
             BoxLayout:
@@ -61,74 +61,111 @@
                 Label:
                     id: xp
         BoxLayout:
-            orientation:'vertical'
             BoxLayout:
-                Label:
-                    text: 'Pontos disponíveis para Características'
-                Label:
-                    id: ptCarac
-                    multiline: False
+                orientation:'vertical'
+                BoxLayout:
+                    Label:
+                        size_hint_min_x: self.texture_size[0]
+                        text: 'Pontos disponíveis para Características'
+                    Label:
+                        id: ptCarac
+                BoxLayout:
+                    Label:
+                        text: 'Inteligência'
+                    TextInput:
+                        id: Inteligencia
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
+                BoxLayout:
+                    Label:
+                        text: 'Percepção'
+                    TextInput:
+                        id: Percepção
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
+                BoxLayout:
+                    Label:
+                        text: 'Força'
+                    TextInput:
+                        id: Força
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
+                BoxLayout:
+                    Label:
+                        text: 'Vigor'
+                    TextInput:
+                        id: Vigor
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
+                BoxLayout:
+                    Label:
+                        text: 'Presença'
+                    TextInput:
+                        id: Presença
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
+                BoxLayout:
+                    Label:
+                        text: 'Comunicação'
+                    TextInput:
+                        id: Comunicação
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
+                BoxLayout:
+                    Label:
+                        text: 'Destreza'
+                    TextInput:
+                        id: Destreza
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
+                BoxLayout:
+                    Label:
+                        text: 'Rapidez'
+                    TextInput:
+                        id: Rapidez
+                        multiline: False
+                        on_text_validate:
+                            root.calculaCustoCarac()
             BoxLayout:
-                Label:
-                    text: 'Inteligência'
-                TextInput:
-                    id: Inteligencia
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
-            BoxLayout:
-                Label:
-                    text: 'Percepção'
-                TextInput:
-                    id: Percepção
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
-            BoxLayout:
-                Label:
-                    text: 'Força'
-                TextInput:
-                    id: Força
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
-            BoxLayout:
-                Label:
-                    text: 'Vigor'
-                TextInput:
-                    id: Vigor
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
-            BoxLayout:
-                Label:
-                    text: 'Presença'
-                TextInput:
-                    id: Presença
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
-            BoxLayout:
-                Label:
-                    text: 'Comunicação'
-                TextInput:
-                    id: Comunicação
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
-            BoxLayout:
-                Label:
-                    text: 'Destreza'
-                TextInput:
-                    id: Destreza
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
-            BoxLayout:
-                Label:
-                    text: 'Rapidez'
-                TextInput:
-                    id: Rapidez
-                    multiline: False
-                    on_text_validate:
-                        root.calculaCustoCarac()
+                orientation: 'vertical'
+                Button:
+                    id: habilidades_gerais_button
+                    text: 'Habilidades Gerais'
+                    on_release:
+                        root.expandir_minimizar_janela()
+                BoxLayout:
+                    orientation: 'vertical'
+                    id: habilidades_gerais_box_layout
+                    BoxLayout:
+                        Label:
+                            text: 'Atletismo'
+                        TextInput:
+                            id: atletismo_text_input
+                            multiline: False
+                            on_text_validate:
+                    Label:
+                        text: 'Barganha'
+                        id: barganha_text
+                        size_hint_y: None
+                        size_hint_x: None
+                        height: 0
+                        width: 0
+                        text_size: (0,0)
+                        opacity: 0
+                    BoxLayout:
+                        Label:
+                            text: 'Cavalgar'
+                        TextInput:
+                            id: cavalgar_text_input
+                            multiline: False
+                            on_text_validate:
+                    BoxLayout:
+                        Label:
+                            text: 'Cavalgar'
