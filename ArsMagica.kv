@@ -2,124 +2,133 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
+        padding: 0
 
         Button:
+            size_hint_y: None
+            height: self.texture_size[0]
             text: 'Salvar Ficha'
             on_release:
                 root.salvarFicha()
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.25
+            BoxLayout:
+                Label:
+                    id: label_nome
+                    text: 'Nome: '
+                TextInput:
+                    multiline: False
+                    id: nomeFicha
+                Label:
+                    text: 'Tipo: '
+                Button:
+                    text: 'tipo'
+                    id: tipoBotao
+                    on_release:
+                        tipodropdown.open(self)
 
-        BoxLayout:
-            Label:
-                text: 'Nome: '
-            TextInput:
-                id: nomeFicha
-            Label:
-                text: 'Tipo: '
-            Button:
-                text: 'tipo'
-                id: tipoBotao
-                on_release:
-                    tipodropdown.open(self)
+                    DropDown:
+                        id: tipodropdown
+                        on_select: tipoBotao.text = '{}'.format(args[1])
+                        Button:
+                            text: 'Magus'
+                            size_hint_y: None
+                            height: self.texture_size[0]
+                            on_release: tipodropdown.select('Magus')
+                        Button:
+                            text: 'Companheiro'
+                            size_hint_y: None
+                            height: self.texture_size[0]
+                            on_release: tipodropdown.select('Companheiro')
+                        Button:
+                            text: 'Groge'
+                            size_hint_y: None
+                            height: self.texture_size[0]
+                            on_release: tipodropdown.select('Groge')
 
-                DropDown:
-                    id: tipodropdown
-                    on_select: tipoBotao.text = '{}'.format(args[1])
-                    Button:
-                        text: 'Magus'
-                        size_hint_y: None
-                        height: 44
-                        on_release: tipodropdown.select('Magus')
-                    Button:
-                        text: 'Companheiro'
-                        size_hint_y: None
-                        height: 44
-                        on_release: tipodropdown.select('Companheiro')
-                    Button:
-                        text: 'Groge'
-                        size_hint_y: None
-                        height: 44
-                        on_release: tipodropdown.select('Groge')
-
+            BoxLayout:
+                Label:
+                    id: label_idade
+                    text: 'Idade'
+                TextInput:
+                    id: idade
+                    multiline: False
+                    on_text_validate:
+                        xp.text = str(int(idade.text)*5)
+                Label:
+                    text: 'Xp:'
+                Label:
+                    id: xp
         BoxLayout:
-            Label:
-                text: 'Idade'
-            TextInput:
-                id: idade
-                multiline: False
-                on_text_validate:
-                    xp.text = str(int(idade.text)*5)
-            Label:
-                text: 'Xp:'
-            Label:
-                id: xp
-        BoxLayout:
-            Label:
-                text: 'Pontos disponíveis para Características'
-            Label:
-                id: ptCarac
-                multiline: False
-        BoxLayout:
-            Label:
-                text: 'Inteligência'
-            TextInput:
-                id: Inteligencia
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Percepção'
-            TextInput:
-                id: Percepção
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Força'
-            TextInput:
-                id: Força
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Vigor'
-            TextInput:
-                id: Vigor
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Presença'
-            TextInput:
-                id: Presença
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Comunicação'
-            TextInput:
-                id: Comunicação
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Destreza'
-            TextInput:
-                id: Destreza
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
-        BoxLayout:
-            Label:
-                text: 'Rapidez'
-            TextInput:
-                id: Rapidez
-                multiline: False
-                on_text_validate:
-                    root.calculaCustoCarac()
+            orientation:'vertical'
+            BoxLayout:
+                Label:
+                    text: 'Pontos disponíveis para Características'
+                Label:
+                    id: ptCarac
+                    multiline: False
+            BoxLayout:
+                Label:
+                    text: 'Inteligência'
+                TextInput:
+                    id: Inteligencia
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
+            BoxLayout:
+                Label:
+                    text: 'Percepção'
+                TextInput:
+                    id: Percepção
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
+            BoxLayout:
+                Label:
+                    text: 'Força'
+                TextInput:
+                    id: Força
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
+            BoxLayout:
+                Label:
+                    text: 'Vigor'
+                TextInput:
+                    id: Vigor
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
+            BoxLayout:
+                Label:
+                    text: 'Presença'
+                TextInput:
+                    id: Presença
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
+            BoxLayout:
+                Label:
+                    text: 'Comunicação'
+                TextInput:
+                    id: Comunicação
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
+            BoxLayout:
+                Label:
+                    text: 'Destreza'
+                TextInput:
+                    id: Destreza
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
+            BoxLayout:
+                Label:
+                    text: 'Rapidez'
+                TextInput:
+                    id: Rapidez
+                    multiline: False
+                    on_text_validate:
+                        root.calculaCustoCarac()
